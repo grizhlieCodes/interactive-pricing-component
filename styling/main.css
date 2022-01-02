@@ -31,7 +31,7 @@ body {
 
 @media screen and (min-width: 1000px) {
   body {
-    background-size: auto 54%;
+    background-size: 100% 54%;
     padding-top: 10.4rem;
   }
 }
