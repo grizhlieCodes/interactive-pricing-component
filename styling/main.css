@@ -25,7 +25,7 @@ body {
   display: grid;
   place-items: start center;
   padding: 8.9rem 2.4rem 8.6rem;
-  background: url("../images/bg-pattern.svg") no-repeat, #F9FAFF;
+  background: url("../images/bg-pattern.svg") no-repeat, #f9faff;
   background-size: auto 50%;
 }
 
@@ -397,6 +397,9 @@ input[type="range"]::-moz-range-track {
     width: max-content;
     left: 100%;
     top: 50%;
+    font-weight: 800;
+    font-size: 1rem;
+    line-height: 1.4rem;
     transform: translate(0.55rem, -50%);
     border-radius: 0.9rem;
     color: #ff8d68;
