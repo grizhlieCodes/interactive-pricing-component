@@ -23,7 +23,7 @@ body {
   min-height: 100vh;
   background: hsl(230, 100%, 99%);
   display: grid;
-  place-items: center;
+  place-items: start center;
   padding: 8.9rem 2.4rem 8.6rem;
   background: url("../images/bg-pattern.svg") no-repeat, #F9FAFF;
   background-size: auto 50%;
@@ -32,6 +32,7 @@ body {
 @media screen and (min-width: 1000px) {
   body {
     background-size: auto 54%;
+    padding-top: 10.4rem;
   }
 }
 
