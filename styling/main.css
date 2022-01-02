@@ -58,7 +58,11 @@ body {
   gap: 0.8rem;
   position: relative;
 }
-
+@media screen and (min-width: 620px) {
+  .pricing-card-header {
+    gap: 1.2rem;
+  }
+}
 .pricing-card-header::before {
   position: absolute;
   content: "";
