@@ -27,11 +27,12 @@ body {
   place-items: center;
   padding: 8.9rem 2.4rem 8.6rem;
   background: url("../images/bg-pattern.svg") no-repeat;
+  background-size: auto 50%;
 }
 
 @media screen and (min-width: 1000px) {
   body {
-    background-size: 100%;
+    background-size: auto 54%;
   }
 }
 
