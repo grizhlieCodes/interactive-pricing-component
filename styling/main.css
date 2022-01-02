@@ -284,6 +284,12 @@ input[type="range"]::-moz-range-track {
   gap: 1rem;
 }
 
+@media screen and (min-width: 620px) {
+  .pricing-card__price-container {
+    justify-self: start;
+  }
+}
+
 .pricing-card__price {
   font-weight: 800;
   font-size: 3.2rem;
