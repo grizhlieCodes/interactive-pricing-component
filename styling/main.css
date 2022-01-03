@@ -1,11 +1,8 @@
-/* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
 
 html {
   font-family: "Manrope", sans-serif;
 }
-
-/* Utility classes */
 
 .sr-only {
   position: absolute;
@@ -17,16 +14,15 @@ html {
   white-space: nowrap;
 }
 
-/* Styling */
-
 body {
   min-height: 100vh;
-  background: hsl(230, 100%, 99%);
+  padding: 8.9rem 2.4rem 8.6rem;
   display: grid;
   place-items: start center;
-  padding: 8.9rem 2.4rem 8.6rem;
-  background: url("../images/bg-pattern.svg") no-repeat, #f9faff;
-  background-size: auto 50%;
+  background: hsl(230, 100%, 99%);
+  background: url("../images/bg-pattern.svg"), #f9faff;
+  background-repeat: no-repeat;
+  background-size: auto 400px;
 }
 
 @media screen and (min-width: 1000px) {
@@ -50,7 +46,6 @@ body {
   }
 }
 
-/* HEADER */
 .pricing-card-header {
   display: flex;
   flex-flow: column nowrap;
@@ -58,11 +53,13 @@ body {
   gap: 0.8rem;
   position: relative;
 }
+
 @media screen and (min-width: 620px) {
   .pricing-card-header {
     gap: 1.2rem;
   }
 }
+
 .pricing-card-header::before {
   position: absolute;
   content: "";
@@ -87,7 +84,6 @@ body {
     line-height: 3.8rem;
   }
 }
-
 .pricing-card-header p {
   font-weight: 600;
   font-size: 1.3rem;
@@ -98,16 +94,12 @@ body {
 }
 
 @media screen and (min-width: 620px) {
-  @media screen and (min-width: 620px) {
-    .pricing-card-header p {
-      font-size: 1.5rem;
-      line-height: 2rem;
-      max-width: none;
-    }
+  .pricing-card-header p {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    max-width: none;
   }
 }
-
-/* CARD */
 
 form.pricing-card {
   background: white;
@@ -131,6 +123,7 @@ form.pricing-card {
   }
 }
 
+
 .pricing-card__views {
   font-weight: 800;
   font-size: 1.2rem;
@@ -148,8 +141,6 @@ form.pricing-card {
     letter-spacing: 0.2rem;
   }
 }
-
-/* RANGE INPUT - Chunky boi */
 
 .pricing-card__views-range {
   margin: 0.7rem 0 0.6rem;
@@ -185,32 +176,20 @@ input[type="range"]::-moz-range-thumb {
 }
 
 input[type="range"]:focus {
-  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+  outline: none; /* Removes the border. Add your preferred outline here :D */
 }
 
-input[type="range"]::-ms-track {
-  width: 100%;
-  cursor: pointer;
-  /* Hides the slider so custom styles can be added */
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-}
-
-/* Special styling for WebKit/Blink */
-
-form.pricing-card {
-  --left: 50;
-}
+/* Styling The Thumb */
 
 form.pricing-card {
   --thumb-dimensions: 4rem;
   --thumb-br: 50%;
   --thumb-bg: #10d8c4;
+  --thumb-hover-bg: #7aeadf;
+  --thumb-active-bg: #24aea1;
   --thumb-bs: 0px 15px 30px rgba(0, 255, 231, 0.6);
 }
 
-/* Chrome - Thumb */
 input[type="range"]::-webkit-slider-thumb {
   margin-top: -1.4rem;
   height: var(--thumb-dimensions);
@@ -223,11 +202,11 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]:hover::-webkit-slider-thumb {
-  background-color: #7aeadf;
+  background-color: var(--thumb-hover-bg);
 }
 
 input[type="range"]:active::-webkit-slider-thumb {
-  background-color: #24aea1;
+  background-color: var(--thumb-active-bg);
 }
 
 /* Firefox - Thumb */
@@ -242,11 +221,11 @@ input[type="range"]::-moz-range-thumb {
 }
 
 input[type="range"]:hover::-moz-range-thumb {
-  background-color: #7aeadf;
+  background-color: var(--thumb-hover-bg);
 }
 
 input[type="range"]:active::-moz-range-thumb {
-  background-color: #24aea1;
+  background-color: var(--thumb-active-bg);
 }
 
 /* Styling the track */
@@ -255,6 +234,7 @@ form.pricing-card {
   --track-h: 0.8rem;
   --track-bg: #ecf0fb;
   --track-br: 0.5rem;
+  --left: 50;
 }
 
 /* Chrome - Track */
@@ -284,8 +264,6 @@ input[type="range"]::-moz-range-track {
     transparent 0%
   );
 }
-
-/* Price */
 
 .pricing-card__price-container {
   display: flex;
@@ -329,8 +307,7 @@ input[type="range"]::-moz-range-track {
     line-height: 2.2rem;
   }
 }
-
-/* Billing Frequency */
+/* Custom Toggle :D */
 
 #billing-freq {
   display: none;
@@ -353,7 +330,6 @@ input[type="range"]::-moz-range-track {
     margin-bottom: 0;
   }
 }
-
 .toggle {
   /* Width in design is 43px but i dislike working with 0.5px */
   width: 4.4rem;
@@ -363,7 +339,6 @@ input[type="range"]::-moz-range-track {
   background: #cfd8ef;
   transition: background 250ms ease-in-out;
 }
-
 .toggle-circle {
   display: block;
   height: 1.4rem;
@@ -390,30 +365,31 @@ input[type="range"]::-moz-range-track {
   color: #848ead;
   position: relative;
 }
+
 @media screen and (min-width: 375px) {
   .pricing-card__freq-option--annual::after {
-    position: absolute;
     content: "-25%";
-    padding: 0.2rem 0.85rem 0.3rem 0.75rem;
-    background: #feede8;
-    display: grid;
-    place-items: center;
+    position: absolute;
     width: max-content;
     left: 100%;
     top: 50%;
+    transform: translate(0.55rem, -50%);
+    padding: 0.2rem 0.85rem 0.3rem 0.75rem;
+    background: #feede8;
     font-weight: 800;
     font-size: 1rem;
     line-height: 1.4rem;
-    transform: translate(0.55rem, -50%);
     border-radius: 0.9rem;
     color: #ff8d68;
   }
 }
+
 @media screen and (min-width: 620px) {
   .pricing-card__freq-option--annual::after {
     content: "-25% discount";
   }
 }
+
 
 /* Features */
 
@@ -472,16 +448,9 @@ input[type="range"]::-moz-range-track {
   font-size: 1.2rem;
   line-height: 1.6rem;
   color: #becdff;
-
   transition: color 250ms ease-in-out;
 }
 
 .pricing-card__submit-btn:hover {
   color: white;
-}
-
-@media screen and (min-width: 620px) {
-  .pricing-card__submit-btn {
-    grid-column: 2/3;
-  }
 }

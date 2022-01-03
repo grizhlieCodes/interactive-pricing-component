@@ -1,11 +1,14 @@
-
 // DOM Elements
-const rangeInput = document.querySelector('input.pricing-card__views-range')
 const viewsContainer = document.querySelector('span.pricing-card__views')
+const rangeInput = document.querySelector('input.pricing-card__views-range')
 const costContainer = document.querySelector('span.pricing-card__price')
 const priceFreqContainer = document.querySelector('span.pricing-card__billing-frequency')
 const frequencyToggle = document.querySelector('input#billing-freq')
 const form = document.querySelector('form.pricing-card')
+
+console.log({rangeInput, viewsContainer, costContainer, priceFreqContainer, frequencyToggle, form})
+
+
 
 // Data & Global Variables
 const VIEWS_DATA = [
@@ -36,51 +39,44 @@ const VIEWS_DATA = [
     },
 ]
 
-// Functions
-
-// Prevent page refresh on submit.
 form.addEventListener('submit', (e) => e.preventDefault())
 
-//EIGHT
-const updateLeftPercentage = () => {
-    const { leftPercentage } = getViewsData()
-    form.style.setProperty('--left', leftPercentage)
+const getData = () => {
+    const currentValue = rangeInput.value
+    const index = currentValue - 1
+    return { pageViews, monthlyCost, leftPercentage } = VIEWS_DATA[index]
 };
 
-//TWO
+const updatePageViews = () => {
+    const { pageViews } = getData()
+    viewsContainer.textContent = `${pageViews} pageviews`
+};
+
+const isAnnualFrequency = () => { return frequencyToggle.checked };
+
+const updatePriceFrequency = (isAnnual) => {
+    if (isAnnual) { priceFreqContainer.textContent = '/ year' }
+    else { priceFreqContainer.textContent = '/ month' }
+}
+
+const updateCost = () => {
+    const { monthlyCost } = getData()
+    const isAnnual = isAnnualFrequency()
+    const price = isAnnual ? ((monthlyCost * 12) * 0.75) : monthlyCost
+    costContainer.textContent = `$${price.toFixed(2)}`
+    updatePriceFrequency(isAnnual)
+}
+
+const updateLeftPercentage = () => {
+    const { leftPercentage } = getData()
+    form.style.setProperty('--left', leftPercentage);
+};
+
 const updateFormOnRangeInput = () => {
     updatePageViews()
     updateCost()
     updateLeftPercentage()
 };
 
-//THREE
-const updatePageViews = () => {
-    const { pageViews } = getViewsData()
-    viewsContainer.textContent = `${pageViews} pageviews`
-};
-
-//FOUR
-const getViewsData = () => {
-    const selectedValue = rangeInput.value
-    const index = selectedValue - 1
-    return { pageViews, monthlyCost, leftPercentage } = VIEWS_DATA[index]
-}
-
-//FIVE
-const updateCost = () => {
-    const { monthlyCost } = getViewsData() //destructuring objects
-    const isAnnual = annualFrequencySelected() //return something
-    const price = isAnnual ? ((monthlyCost * 12) * 0.75) : monthlyCost //template literals
-    costContainer.textContent = `$${price.toFixed(2)}`
-    isAnnual ? priceFreqContainer.textContent = '/ year' : priceFreqContainer.textContent = '/ month'
-};
-
-//SIX
-const annualFrequencySelected = () => { return frequencyToggle.checked };
-
-//ONE
 rangeInput.addEventListener('input', updateFormOnRangeInput)
-
-//SEVEN
 frequencyToggle.addEventListener('input', updateCost)
